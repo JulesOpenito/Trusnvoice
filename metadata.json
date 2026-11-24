@@ -1,0 +1,6 @@
+{
+  "name": "TrustInvoice",
+  "description": "Enterprise AI Invoice Collection, Anti-Fraud Verification, AR Dispute Advisor & Cloud Persistence Suite.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with display name and business preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "companyName": { "type": "string" },
+        "accountRole": { "type": "string" },
+        "phone": { "type": "string" },
+        "taxId": { "type": "string" },
+        "billingAddress": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Trust-verified cryptographic invoice record with audit trails and payment details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientEmail": { "type": "string" },
+        "amount": { "type": "number" },
+        "issuedDate": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "status": { "type": "string" },
+        "trustSealHash": { "type": "string" },
+        "fraudRiskScore": { "type": "number" },
+        "isSecureSigned": { "type": "boolean" },
+        "secureIPLock": { "type": "boolean" },
+        "autoReminders": { "type": "boolean" },
+        "notes": { "type": "string" },
+        "paymentDetails": { "type": "object" },
+        "items": { "type": "array" },
+        "auditLogs": { "type": "array" },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "invoiceNumber", "clientName", "clientEmail", "amount", "status"]
+    },
+    "AdvisoryMessage": {
+      "title": "AdvisoryMessage",
+      "description": "AI Accounts Receivable advisory chat messages",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "role": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "role", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile collection"
+    },
+    "/users/{userId}/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "User's individual verified invoice records"
+    },
+    "/users/{userId}/advisory_chats/{chatId}": {
+      "schema": "AdvisoryMessage",
+      "description": "User's AI Accounts Receivable Advisory conversations"
+    }
+  }
+}
